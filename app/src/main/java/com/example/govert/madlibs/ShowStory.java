@@ -25,15 +25,14 @@ public class ShowStory extends AppCompatActivity {
     }
 
     public void playAgain() {
-        // clear story
-        story.clear();
-
+        Intent intent = new Intent(ShowStory.this, MainActivity.class);
         finish();
+        startActivity(intent);
     }
 
     public void onBackPressed() {
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        Intent intent = new Intent(ShowStory.this, MainActivity.class);
+        finish();
         startActivity(intent);
     }
 }

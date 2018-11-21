@@ -11,12 +11,7 @@ import android.widget.Spinner;
 import java.io.InputStream;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-
-    // create story options
-    private static final String[] stories = new String[]{"Simple", "Tarzan", "University", "Clothes", "Dance"};
-
-    // create story with inputStream fileName
-    private InputStream stream;
+    // initialize story
     private Story story;
 
     @Override
@@ -24,10 +19,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // create story options
+        String[] stories = new String[]{"Simple", "Tarzan", "University", "Clothes", "Dance"};
+
         // create spinner
         Spinner spinner = (Spinner) findViewById(R.id.chooseStory);
         ArrayAdapter<String>adapter = new ArrayAdapter<>(MainActivity.this,
-                android.R.layout.simple_spinner_item, stories);
+                R.layout.spinner_item, stories);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         spinner.setAdapter(adapter);
 
@@ -47,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     /** Creates story instance based on user selection */
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        InputStream stream;
         switch(position) {
             case 0:
                 // set stream for story

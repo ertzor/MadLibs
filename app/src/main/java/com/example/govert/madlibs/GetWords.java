@@ -12,7 +12,6 @@ import static android.icu.lang.UProperty.INT_START;
 
 public class GetWords extends AppCompatActivity {
     private Story story;
-    private String word;
     private EditText inputField;
 
     @Override
@@ -22,15 +21,6 @@ public class GetWords extends AppCompatActivity {
 
         // get input field
         inputField = (EditText) findViewById(R.id.input);
-
-        // set listener
-        inputField.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                word = v.getText().toString();
-                return false;
-            }
-        });
 
         // get story
         story = (Story) getIntent().getSerializableExtra("chosen_story");
@@ -48,6 +38,9 @@ public class GetWords extends AppCompatActivity {
     }
 
     public void enterWord(View view) {
+        // get word
+        String word = inputField.getText().toString();
+
         // fill in word
         story.fillInPlaceholder(word);
 
@@ -70,6 +63,7 @@ public class GetWords extends AppCompatActivity {
         intent.putExtra("chosen_story", story);
 
         if (typeOfWord == "") {
+            finish();
             startActivity(intent);
         }
     }
