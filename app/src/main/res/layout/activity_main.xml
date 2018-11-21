@@ -25,7 +25,7 @@
         android:id="@+id/welcomeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome to Mad Libs! I will ask you to fill in words to complete a story. You won't be able to see the whole story until you are done filling in all the missing words. That's part of the fun. Click below to get started..."
+        android:text="Welcome to Mad Libs! I will ask you to fill in words to complete a story. You won't be able to see the whole story until you are done filling in all the missing words. That's part of the fun. Choose a story below to get started..."
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginRight="8dp"
@@ -52,14 +52,13 @@
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/playButton"
-        />
+        app:layout_constraintRight_toLeftOf="@+id/playButton" />
 
     <android.support.constraint.Guideline
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/guideline"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.85"/>
+        app:layout_constraintGuide_percent="0.9"/>
 
 </android.support.constraint.ConstraintLayout>

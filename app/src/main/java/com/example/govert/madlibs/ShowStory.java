@@ -17,8 +17,10 @@ public class ShowStory extends AppCompatActivity {
         // get story
         story = (Story) getIntent().getSerializableExtra("chosen_story");
 
+        // get textView
         TextView storyView = (TextView) findViewById(R.id.story);
 
+        // set text to story
         storyView.setText(story.toString());
     }
 
@@ -26,8 +28,12 @@ public class ShowStory extends AppCompatActivity {
         // clear story
         story.clear();
 
-        // go back to starting screen
-        Intent intent = new Intent(ShowStory.this, MainActivity.class);
+        finish();
+    }
+
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
 }

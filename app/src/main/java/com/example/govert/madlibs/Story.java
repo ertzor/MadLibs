@@ -19,6 +19,11 @@
 // !YOU MAY WANT TO CHANGE THE PACKAGE BELOW SO THAT IT MATCHES YOUR PROJECT'S PACKAGE!
 package com.example.govert.madlibs;
 
+import android.graphics.Typeface;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.StyleSpan;
+
 import java.io.*;
 import java.util.*;
 
@@ -52,6 +57,7 @@ public class Story implements Serializable {
     /** replaces the next unfilled placeholder with the given word */
     public void fillInPlaceholder(String word) {
         if (!isFilledIn()) {
+            // fill in word
             text = text.replace("<" + filledIn + ">", word);
             filledIn++;
         }

@@ -13,7 +13,7 @@ import java.io.InputStream;
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     // create story options
-    private static final String[] stories = {"Simple", "Tarzan", "University", "Clothes", "Dance"};
+    private static final String[] stories = new String[]{"Simple", "Tarzan", "University", "Clothes", "Dance"};
 
     // create story with inputStream fileName
     private InputStream stream;
@@ -28,22 +28,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Spinner spinner = (Spinner) findViewById(R.id.chooseStory);
         ArrayAdapter<String>adapter = new ArrayAdapter<>(MainActivity.this,
                 android.R.layout.simple_spinner_item, stories);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         spinner.setAdapter(adapter);
 
         // set listener for spinner
         spinner.setOnItemSelectedListener(this);
-    }
-
-    /** Set story to default story if no story selected */
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-        // set stream for default story
-        stream = getResources().openRawResource(getResources().getIdentifier("madlib0_simple",
-                "raw", getPackageName()));
-
-        // make default story instance
-        story = new Story(stream);
     }
 
     /** Open words interface with intent */
@@ -66,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
                 // make story instance
                 story = new Story(stream);
+                break;
             case 1:
                 // set stream for story
                 stream = getResources().openRawResource(getResources().getIdentifier("madlib1_tarzan",
@@ -73,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
                 // make story instance
                 story = new Story(stream);
+                break;
             case 2:
                 // set stream for story
                         stream = getResources().openRawResource(getResources().getIdentifier("madlib2_university",
@@ -80,6 +71,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
                 // make story instance
                 story = new Story(stream);
+                break;
             case 3:
                 // set stream for story
                 stream = getResources().openRawResource(getResources().getIdentifier("madlib3_clothes",
@@ -87,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
                 // make story instance
                 story = new Story(stream);
+                break;
             case 4:
                 // set stream for story
                 stream = getResources().openRawResource(getResources().getIdentifier("madlib4_dance",
@@ -94,6 +87,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
                 // make story instance
                 story = new Story(stream);
+                break;
         }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+        // auto generated method stub
     }
 }

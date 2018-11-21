@@ -16,8 +16,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".GetWords" />
-        <activity android:name=".ShowStory"></activity>
+        <activity
+            android:name=".GetWords"
+            android:parentActivityName=".MainActivity" >
+        </activity>
+        <activity
+            android:name=".ShowStory"
+            android:parentActivityName=".MainActivity" >
+        </activity>
     </application>
 
 </manifest>
