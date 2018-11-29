@@ -19,11 +19,6 @@
 // !YOU MAY WANT TO CHANGE THE PACKAGE BELOW SO THAT IT MATCHES YOUR PROJECT'S PACKAGE!
 package com.example.govert.madlibs;
 
-import android.graphics.Typeface;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.style.StyleSpan;
-
 import java.io.*;
 import java.util.*;
 

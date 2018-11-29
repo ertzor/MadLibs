@@ -3,16 +3,15 @@ package com.example.govert.madlibs;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import static android.icu.lang.UProperty.INT_START;
 
 public class GetWords extends AppCompatActivity {
     private Story story;
     private EditText inputField;
+    private TextView wordsLeft;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,43 +25,39 @@ public class GetWords extends AppCompatActivity {
         story = (Story) getIntent().getSerializableExtra("chosen_story");
 
         // set amount of words left
-        TextView wordsLeft = (TextView) findViewById(R.id.wordsLeft);
-        int nOfWordsLeft = story.getPlaceholderCount();
-        String text = String.format("%s word(s) left", nOfWordsLeft);
-        wordsLeft.setText(text);
+        wordsLeft = (TextView) findViewById(R.id.wordsLeft);
+        wordsLeft.setText(String.format("%s word(s) left", story.getPlaceholderRemainingCount()));
 
         // set typeOfWord hint
-        String typeOfWord = story.getNextPlaceholder().toLowerCase();
-        String hint = String.format("Enter %s", typeOfWord);
-        inputField.setHint(hint);
+        inputField.setHint(String.format("Enter %s", story.getNextPlaceholder().toLowerCase()));
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        // set wordsLeft
+        wordsLeft.setText(String.format("%s word(s) left", story.getPlaceholderRemainingCount()));
     }
 
     public void enterWord(View view) {
-        // get word
-        String word = inputField.getText().toString();
-
         // fill in word
-        story.fillInPlaceholder(word);
+        story.fillInPlaceholder(inputField.getText().toString());
 
         // clear inputField
         inputField.setText("");
 
         // set new typeOfWord hint
-        String typeOfWord = story.getNextPlaceholder().toLowerCase();
-        String hint = String.format("Enter %s", typeOfWord);
-        inputField.setHint(hint);
+        inputField.setHint(String.format("Enter %s", story.getNextPlaceholder().toLowerCase()));
 
         // set new amount of words left
-        TextView wordsLeft = (TextView) findViewById(R.id.wordsLeft);
-        int nOfWordsLeft = story.getPlaceholderRemainingCount();
-        String text = String.format("%s word(s) left", nOfWordsLeft);
-        wordsLeft.setText(text);
+        wordsLeft.setText(String.format("%s word(s) left", story.getPlaceholderRemainingCount()));
 
         // make intent
         Intent intent = new Intent(GetWords.this, ShowStory.class);
         intent.putExtra("chosen_story", story);
 
-        if (typeOfWord == "") {
+        // if no next placeholder, show story
+        if (story.getNextPlaceholder() == "") {
             finish();
             startActivity(intent);
         }

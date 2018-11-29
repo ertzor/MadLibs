@@ -8,8 +8,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
-import java.io.InputStream;
-
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     // initialize story
     private Story story;
@@ -24,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         // create spinner
         Spinner spinner = (Spinner) findViewById(R.id.chooseStory);
-        ArrayAdapter<String>adapter = new ArrayAdapter<>(MainActivity.this,
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(MainActivity.this,
                 R.layout.spinner_item, stories);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         spinner.setAdapter(adapter);
@@ -45,49 +43,29 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     /** Creates story instance based on user selection */
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        InputStream stream;
         switch(position) {
             case 0:
-                // set stream for story
-                stream = getResources().openRawResource(getResources().getIdentifier("madlib0_simple",
-                        "raw", getPackageName()));
-
-                // make story instance
-                story = new Story(stream);
+                newStory("madlib0_simple");
                 break;
             case 1:
-                // set stream for story
-                stream = getResources().openRawResource(getResources().getIdentifier("madlib1_tarzan",
-                        "raw", getPackageName()));
-
-                // make story instance
-                story = new Story(stream);
+                newStory("madlib1_tarzan");
                 break;
             case 2:
-                // set stream for story
-                        stream = getResources().openRawResource(getResources().getIdentifier("madlib2_university",
-                        "raw", getPackageName()));
-
-                // make story instance
-                story = new Story(stream);
+                newStory("madlib2_university");
                 break;
             case 3:
-                // set stream for story
-                stream = getResources().openRawResource(getResources().getIdentifier("madlib3_clothes",
-                        "raw", getPackageName()));
-
-                // make story instance
-                story = new Story(stream);
+                newStory("madlib3_clothes");
                 break;
             case 4:
-                // set stream for story
-                stream = getResources().openRawResource(getResources().getIdentifier("madlib4_dance",
-                        "raw", getPackageName()));
-
-                // make story instance
-                story = new Story(stream);
+                newStory("madlib4_dance");
                 break;
         }
+    }
+
+    public void newStory(String storyName) {
+        // create story
+        story = new Story(getResources().openRawResource(getResources().getIdentifier(storyName,
+                "raw", getPackageName())));
     }
 
     @Override
