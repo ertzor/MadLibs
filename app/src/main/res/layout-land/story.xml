@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:text="Your Mad Lib story!"
         android:textSize="36dp"
+        android:textStyle="bold"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginRight="8dp"
