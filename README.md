@@ -1,9 +1,9 @@
 # MadLibs
 
 Put in words to create your own crazy story!
-![Alt text](/Screenshot_20181123-143340.jpg?raw=true "Portrait")
-![Alt text](/Screenshot_20181123-143419.jpg?raw=true "Landscape")
-![Alt text](/Screenshot_20181123-143437.jpg?raw=true "Portrait")
-![Alt text](/Screenshot_20181123-143443.jpg?raw=true "Landscape")
-![Alt text](/Screenshot_20181123-143501.jpg?raw=true "Portrait")
-![Alt text](/Screenshot_20181123-143505.jpg?raw=true "Landscape")
+![Alt text](/main_p.jpg?raw=true "Portrait")
+![Alt text](/main_l.jpg?raw=true "Landscape")
+![Alt text](/words_p.jpg?raw=true "Portrait")
+![Alt text](/words_l.jpg?raw=true "Landscape")
+![Alt text](/story_p.jpg?raw=true "Portrait")
+![Alt text](/story_l.jpg?raw=true "Landscape")
